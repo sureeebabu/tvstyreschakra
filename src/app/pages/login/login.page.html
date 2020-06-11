@@ -1,0 +1,55 @@
+<ion-content>
+  <div class="divCenter">
+    <div class="container h-100">
+      <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+          <div class="d-flex justify-content-center">
+            <div class="brand_logo_container">
+              <img src="../../../assets/eaglelogo.jpg" class="brand_logo" alt="Logo">
+            </div>
+          </div>
+          <div class=" justify-content-center form_container">
+            <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
+              <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input type="text" formControlName="username" matInput placeholder="Username">
+                <mat-icon matSuffix>person_outline</mat-icon>
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of errorMsg.validationMSG.username">
+                  <div class="error-message"
+                    *ngIf="validationsForm.get('username').hasError(validation.type) && (validationsForm.get('username').dirty || validationsForm.get('username').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" placeholder="Your password"
+                  style="width: 100%;">
+                <mat-icon matSuffix>lock</mat-icon>
+                <!-- <mat-hint>Min 8 char 1 number and 1 alpha</mat-hint> -->
+              </mat-form-field>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of errorMsg.validationMSG.password">
+                  <div class="error-message"
+                    *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+              <div class="ion-text-start">
+                Forgot your password?
+              </div>
+              <div class="">
+                <ion-button size="medium" expand="block" fill="outline" color="primary" type="submit"
+                  [disabled]="!validationsForm.valid">Login
+                </ion-button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

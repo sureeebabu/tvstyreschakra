@@ -1,5 +1,7 @@
 {
   "name": "tvstyreschakra",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
