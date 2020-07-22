@@ -6,13 +6,8 @@ import { Injectable } from '@angular/core';
 export class ErrormsgService {
 
   constructor() { }
-
   validationMSG = {
     username: [
-      { type: 'required', message: 'Name is required.' },
-      { type: 'pattern', message: 'Number are not allowed' }
-    ],
-    name: [
       { type: 'required', message: 'Name is required.' },
       { type: 'pattern', message: 'Number are not allowed' }
     ],
@@ -36,6 +31,30 @@ export class ErrormsgService {
     ],
     matchingPasswords: [
       { type: 'areEqual', message: 'Password mismatch.' }
-    ]
+    ],
+    PaymentType : [
+      { type: 'required', message: 'Payment Type is required.' }
+    ],
+    landmark: [
+      { type: 'required', message: 'Landmark is required.' }
+    ],
+    address: [
+      { type: 'required', message: 'Address is required.' }
+    ],
+    City: [
+      { type: 'required', message: 'City is required.' }
+    ],
+    Country: [
+      { type: 'required', message: 'Country is required.' }
+    ],
+    State: [
+      { type: 'required', message: 'State is required.' }
+    ],
+    Pincode: [
+      { type: 'required', message: 'Pincode is required.' },
+      { type: 'minlength', message: 'Pincode must be at least 10' },
+      { type: 'maxlength', message: 'Pincode cannot be more than 10' },
+      { type: 'pattern', message: 'Chapter are not allowed' }
+    ],
   };
 }
