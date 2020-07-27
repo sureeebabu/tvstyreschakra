@@ -4,6 +4,7 @@ import { ErrormsgService } from 'src/app/services/errormsg/errormsg.service';
 import { ConfigService } from 'src/app/services/config/config.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
     public errorMsg: ErrormsgService,
     private config: ConfigService,
     private loader: LoaderService,
-    private toast: ToastService
+    private toast: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,14 +37,16 @@ export class LoginPage implements OnInit {
   onSubmit(values) {
     this.loader.present(`Please Wait ... `);
     const bodyValues = {
-      "username" : values.username,
+      "operator_emp_name" : values.username,
       "Password" : values.password
     };
     this.config.postData('login_in', bodyValues).subscribe(res => {
       console.log(res);
       const response: any = res;
       if (response.is_success) {
+        localStorage.setItem('lsOperator', JSON.stringify(response));
         this.toast.toastFn(`${response.messages}`);
+        this.router.navigateByUrl('/home');
       } else {
         alert('else');
         this.toast.toastFn(`${response.messages}`);
