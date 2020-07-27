@@ -10,15 +10,16 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 export class HomePage implements OnInit {
 
   count: number = 0;
+  lsOperator: any;
   constructor(
     private config: ConfigService,
     private loader: LoaderService
   ) { }
 
   ngOnInit() {
-    const lsOperator = JSON.parse(localStorage.getItem('lsOperator'));
-    console.log(lsOperator.operator.operator_emp_code);
-    this.getOperatorTaskCount(lsOperator.operator.operator_emp_code);
+    this.lsOperator = JSON.parse(localStorage.getItem('lsOperator'));
+    console.log(this.lsOperator.operator);
+    this.getOperatorTaskCount(this.lsOperator.operator.operator_emp_code);
   }
 
   getOperatorTaskCount(empCode) {

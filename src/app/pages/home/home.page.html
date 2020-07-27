@@ -5,11 +5,37 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Dashboard
+      </ion-col>
+      <ion-col class="ion-text-end">
+        Username : {{lsOperator.operator.username}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
   <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="6" class="ion-text-center">
         <ion-card>
-          <h4>Today Allocated Test {{count}}</h4>
+          <h4>Today Allocated Test <ion-text color="danger">{{count}}</ion-text></h4>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-card>
+          <h4>Pending Request</h4>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-card>
+          <h4>Completed Test </h4>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-card>
+          <h4>Verified Request</h4>
         </ion-card>
       </ion-col>
     </ion-row>
