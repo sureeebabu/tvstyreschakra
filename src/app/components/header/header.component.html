@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="ion-text-center">
+            <img src="../../../assets/textlogo.jpeg" />
+        </ion-title>
+    </ion-toolbar>
+    <ion-grid style="background-color: orange;">
+        <ion-row>
+            <ion-col *ngIf="heading">
+                <ion-text color="light"><b> Dashboard</b></ion-text>
+            </ion-col>
+            <ion-col class="ion-text-end">
+                <ion-text color="light"><b>Username : {{lsOperator.operator.username}}</b></ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>

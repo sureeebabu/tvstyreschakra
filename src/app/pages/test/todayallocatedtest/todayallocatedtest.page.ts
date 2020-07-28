@@ -3,13 +3,13 @@ import { ConfigService } from 'src/app/services/config/config.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-todayallocatedtest',
+  templateUrl: './todayallocatedtest.page.html',
+  styleUrls: ['./todayallocatedtest.page.scss'],
 })
-export class HomePage implements OnInit {
+export class TodayallocatedtestPage implements OnInit {
 
-  count: number = 0;
+  taskJson: any = [];
   constructor(
     private config: ConfigService,
     private loader: LoaderService
@@ -17,23 +17,22 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     const lsOperator = JSON.parse(localStorage.getItem('lsOperator'));
-    this.getOperatorTaskCount(lsOperator.operator.operator_emp_code);
+    this.getOperatorTask(lsOperator.operator.operator_emp_code);
   }
 
-  getOperatorTaskCount(empCode) {
+  getOperatorTask(empCode) {
     this.loader.present(`Please Wait ....`);
 
     const values = {
       "operator_emp_code" : empCode
     };
-    this.config.postData(`getTaskCount`, values).subscribe(res => {
+    this.config.postData(`getTask`, values).subscribe(res => {
       console.log(res);
       const response: any = res;
       if (response.is_success) {
-        this.count = response.data;
+        this.taskJson = response.data;
         this.loader.dismiss();
       }
-
     }, error => {
       console.log(error);
       this.loader.dismiss();

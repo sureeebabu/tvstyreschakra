@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<ion-content>
+    <div class="table-responsive pt-1">
+        <table class="table">
+            <thead style="background-color: orange;">
+                <tr class="info text-center">
+                    <td class="ion-text-nowrap text-light">TR.NO</td>
+                    <td class="ion-text-nowrap text-light">Test Name</td>
+                    <td class="ion-text-nowrap text-light">Tyre Size</td>
+                    <td class="ion-text-nowrap text-light">Stencil No </td>
+                </tr>
+            </thead>
+            <tr *ngFor="let t of taskJson">
+                <td class="ion-text-nowrap">{{t.tr_no}}</td>
+                <td class="ion-text-nowrap">{{t.Parameter}}</td>
+                <td class="text-center">{{t.value_1}}</td>
+                <td>{{t.stencil_no}}</td>
+            </tr>
+        </table>
+    </div>
+</ion-content>

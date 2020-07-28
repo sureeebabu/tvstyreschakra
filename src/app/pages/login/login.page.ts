@@ -44,11 +44,13 @@ export class LoginPage implements OnInit {
       console.log(res);
       const response: any = res;
       if (response.is_success) {
+        localStorage.setItem('token', 'true');
         localStorage.setItem('lsOperator', JSON.stringify(response));
         this.toast.toastFn(`${response.messages}`);
-        this.router.navigateByUrl('/home');
+        // this.router.navigateByUrl('/home');
+        this.router.navigate(['home']);
       } else {
-        alert('else');
+        // alert('else');
         this.toast.toastFn(`${response.messages}`);
       }
       this.loader.dismiss();
